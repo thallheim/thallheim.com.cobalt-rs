@@ -1,4 +1,4 @@
-name: test
+name: thallheim.com
 
 on:
   push:
@@ -27,6 +27,8 @@ jobs:
       uses: dtolnay/rust-toolchain@stable
       with:
         toolchain: ${{ matrix.rust }}
+    - name: Install rev
+      run: apt install rev
     - name: Install Cobalt
       run: curl -LSfs https://raw.githubusercontent.com/crate-ci/gh-install/master/v1/install.sh | sh -s -- --git cobalt-org/cobalt.rs --crate cobalt
 
