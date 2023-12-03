@@ -1,0 +1,26 @@
+source: "."
+destination: _site
+
+site:
+  title: "thallheim"
+  base_url: "https://thallheim.com"
+
+default:
+  layout: default.liquid
+  permalink: /{{parent}}/{{name}}/
+syntax_highlight:
+  theme: "base16-eighties.dark"
+  enabled: true
+
+pages:
+  default: {}
+
+posts:
+  dir: "musings"
+  rss: "musings.rss"
+  drafts_dir: "_drafts"
+  default:
+    # For simpler drafts
+    published_date: "2020-03-14 01:59:26 -0500"
+    layout: musings.liquid
+    permalink: /musings/{{year}}/{{month}}/{{slug}}/
