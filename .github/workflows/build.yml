@@ -10,6 +10,7 @@ env:
   
 jobs:
   env-build:
+    runs-on: self-hosted
     name: Env-build
     strategy:
       fail-fast: false
