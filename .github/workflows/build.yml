@@ -20,13 +20,13 @@ jobs:
     continue-on-error: ${{ matrix.rust != 'stable' }}
     runs-on: ${{ matrix.os }}
     steps:
-    - name: Install Rust
+      name: Install Rust
       uses: dtolnay/rust-toolchain@stable
       with:
         toolchain: ${{ matrix.rust }}
-    - name: Install rev
+      name: Install rev
       run: sudo apt install rev
-    - name: Install Cobalt
+      name: Install Cobalt
       run: cargo install cobalt-bin
 
   site-build:
@@ -39,7 +39,7 @@ jobs:
     continue-on-error: ${{ matrix.rust != 'stable' }}
     runs-on: ${{ matrix.os }}
     steps:
-    - name: Checkout repository
+      name: Checkout repository
       uses: actions/checkout@v4
-    - name: Build site
+      name: Build site
       run: cobalt build
