@@ -22,8 +22,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Build site
+      - name: Rustify
         uses: dtolnay/rust-toolchain@stable
+      - name: Install Cobalt  
         run: |
           cargo install cobalt-bin
+      - name: Build site
+        run: |
           cobalt build
