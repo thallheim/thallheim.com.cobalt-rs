@@ -10,4 +10,4 @@ Here be code things.
     let test: String = "Woo \o/";
 ```
 
-**Many cool.**
+**Many cool.** Such syntax highlight. *Wow*.
