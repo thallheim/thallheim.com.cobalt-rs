@@ -1,4 +1,4 @@
-name: thallheim.com
+name: Build thallheim.com
 
 on:
   push:
@@ -20,14 +20,15 @@ jobs:
     continue-on-error: ${{ matrix.rust != 'stable' }}
     runs-on: ${{ matrix.os }}
     steps:
-      name: Install Rust
-      uses: dtolnay/rust-toolchain@stable
-      with:
-        toolchain: ${{ matrix.rust }}
-      name: Install rev
-      run: sudo apt install rev
-      name: Install Cobalt
-      run: cargo install cobalt-bin
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: ${{ matrix.rust }}
+      - name: Install rev
+        run: sudo apt install rev
+      - name: Install Cobalt
+        run: |
+          cargo install cobalt-bin
 
   site-build:
     name: Site-build
@@ -39,7 +40,8 @@ jobs:
     continue-on-error: ${{ matrix.rust != 'stable' }}
     runs-on: ${{ matrix.os }}
     steps:
-      name: Checkout repository
-      uses: actions/checkout@v4
-      name: Build site
-      run: cobalt build
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Build site
+        run: |
+          cobalt build
