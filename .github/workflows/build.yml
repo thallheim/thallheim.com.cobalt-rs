@@ -10,17 +10,20 @@ env:
   
 jobs:
   site-build:
-    name: Site-build
+    name: Build thallheim.com
     strategy:
       fail-fast: false
       matrix:
-        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
+        os: ["ubuntu-latest"]
         rust: ["stable"]
     continue-on-error: ${{ matrix.rust != 'stable' }}
-    runs-on: ${{ matrix.os }}
+    runs-on: self-hosted
+#    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Build site
+        uses: dtolnay/rust-toolchain@stable
         run: |
+          cargo install cobalt-bin
           cobalt build
