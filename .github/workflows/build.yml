@@ -9,27 +9,6 @@ env:
   CLICOLOR: 1
   
 jobs:
-  env-build:
-    runs-on: self-hosted
-    name: Env-build
-    strategy:
-      fail-fast: false
-      matrix:
-        os: ["ubuntu-latest", "windows-latest", "macos-latest"]
-        rust: ["stable"]
-    continue-on-error: ${{ matrix.rust != 'stable' }}
-    runs-on: ${{ matrix.os }}
-    steps:
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
-        with:
-          toolchain: ${{ matrix.rust }}
-      - name: Install rev
-        run: sudo apt install rev
-      - name: Install Cobalt
-        run: |
-          cargo install cobalt-bin
-
   site-build:
     name: Site-build
     strategy:
