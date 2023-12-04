@@ -3,8 +3,6 @@ name: thallheim.com
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 env:
   CARGO_TERM_COLOR: always
@@ -21,8 +19,6 @@ jobs:
     continue-on-error: ${{ matrix.rust != 'stable' }}
     runs-on: ${{ matrix.os }}
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
     - name: Install Rust
       uses: dtolnay/rust-toolchain@stable
       with:
@@ -30,7 +26,7 @@ jobs:
     - name: Install rev
       run: sudo apt install rev
     - name: Install Cobalt
-      run: curl -LSfs https://raw.githubusercontent.com/crate-ci/gh-install/master/v1/install.sh | sh -s -- --git cobalt-org/cobalt.rs --crate cobalt
+      run: cargo install cobalt-bin
 
   site-build:
     name: Site-build
@@ -44,9 +40,5 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Install Rust
-      uses: dtolnay/rust-toolchain@stable
-      with:
-        toolchain: ${{ matrix.rust }}
     - name: Build site
       run: cobalt build
