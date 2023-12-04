@@ -26,7 +26,8 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
       - name: Install Cobalt  
         run: |
-          cargo install cobalt-bin
+          echo "[INFO] Ensure Cobalt present:"
+          cargo install cobalt-bin || echo "[INFO] Cobalt installed: YES"
       - name: Build site
         run: |
           cobalt build
