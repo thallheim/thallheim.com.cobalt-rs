@@ -11,17 +11,18 @@ jobs:
 
   do-production-build:
     permissions:
-      actions: write
-      contents: write
-      deployments: write
-      id-token: write
-      issues: none
-      packages: write
-      pages: none
-      pull-requests: none
-      repository-projects: none
-      security-events: read
-      statuses: write
+      write-all
+      # actions: write
+      # contents: write
+      # deployments: write
+      # id-token: write
+      # issues: none
+      # packages: write
+      # pages: none
+      # pull-requests: none
+      # repository-projects: none
+      # security-events: read
+      # statuses: write
 
     name: Deploy test build to production
     strategy:
