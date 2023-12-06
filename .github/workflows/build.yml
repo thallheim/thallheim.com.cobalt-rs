@@ -11,6 +11,19 @@ env:
 jobs:
 
   do-test-build:
+    permissions:
+      actions: write
+      contents: write
+      deployments: write
+      id-token: write
+      issues: none
+      packages: write
+      pages: none
+      pull-requests: none
+      repository-projects: none
+      security-events: read
+      statuses: write
+
     name: Site test build
     strategy:
       fail-fast: false
