@@ -1,5 +1,5 @@
 source: "."
-destination: test-build
+destination: staged-test-build
 
 site:
   title: "thallheim"
