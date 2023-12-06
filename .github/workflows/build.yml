@@ -1,4 +1,4 @@
-name: Build thallheim.com
+name: Build site
 
 on:
   push:
@@ -7,27 +7,34 @@ on:
 env:
   CARGO_TERM_COLOR: always
   CLICOLOR: 1
-  
+
 jobs:
-  site-build:
-    name: Build thallheim.com
+
+  do-test-build:
+    name: Site test build
     strategy:
       fail-fast: false
       matrix:
         os: ["ubuntu-latest"]
         rust: ["stable"]
     continue-on-error: ${{ matrix.rust != 'stable' }}
-    runs-on: self-hosted
 #    runs-on: ${{ matrix.os }}
+    runs-on: self-hosted
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Rustify
+      - name: Init Rust toolchain
         uses: dtolnay/rust-toolchain@stable
-      - name: Install Cobalt  
+
+      - name: Install Cobalt
         run: |
-          echo "[INFO] Ensure Cobalt present:"
           cargo install cobalt-bin || echo "[INFO] Cobalt installed: YES"
+      - name: Repo checkout
+        uses: actions/checkout@v4
       - name: Build site
         run: |
           cobalt build
+      - name: Upload as test build
+        uses: actions/upload-artifact@v3
+        with:
+          name: site-artifacts
+          path: test-build
