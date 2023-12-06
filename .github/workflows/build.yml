@@ -42,20 +42,14 @@ jobs:
           cargo install cobalt-bin || echo "[INFO] Cobalt installed: YES"
       - name: Repo checkout
         uses: actions/checkout@v4
-      - name: "[DEBUG] Show CWP"
-        run: |
-          pwd
-      - name: "[DEBUG] Show Cobalt dest path"
-        run: |
-          cobalt debug config | grep destination
       - name: Build site
         run: |
-          cobalt build -d ./
+          "cobalt build -d ./"
       - name: Upload test build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: site-artifacts
-          path: staged-test-build
+#          path: staged-test-build
       - name: Set up Git
         run: |
           git config --global user.email "actions@github.com"
