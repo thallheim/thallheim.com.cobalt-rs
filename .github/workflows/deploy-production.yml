@@ -10,8 +10,7 @@ env:
 jobs:
 
   do-production-build:
-    permissions:
-      write-all
+    permissions: write-all
       # actions: write
       # contents: write
       # deployments: write
