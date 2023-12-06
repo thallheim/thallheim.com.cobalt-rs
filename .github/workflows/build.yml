@@ -64,7 +64,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: site-artifacts
-          path: staged-test-build/*
+          path: .
       - name: Commit and push build to test branch
         run: |
           git add .
