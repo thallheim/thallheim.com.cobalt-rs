@@ -50,7 +50,7 @@ jobs:
           cobalt debug config | grep destination
       - name: Build site
         run: |
-          cobalt build
+          cobalt build -d ./
       - name: Upload test build artifacts
         uses: actions/upload-artifact@v3
         with:
