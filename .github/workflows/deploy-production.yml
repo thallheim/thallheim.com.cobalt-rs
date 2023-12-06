@@ -40,6 +40,8 @@ jobs:
           ref: test-build
       - name: Switch to production branch
         uses: actions/checkout@v3
+        with:
+          ref: production-build
       - name: Push test build to production branch
         run: |
           git add .
