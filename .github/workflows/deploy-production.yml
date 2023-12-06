@@ -40,7 +40,7 @@ jobs:
           ref: production-build
       - name: Merge test build into production branch
         run: |
-          git merge --no-ff origin test-build
+          git merge --no-ff test-build
           git add .
           git commit -am "Deploy test build to production"
           git push origin production-build
