@@ -61,7 +61,7 @@ jobs:
         with:
           ref: test-build
       - name: Pull test build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
         with:
           name: site-artifacts
           path: staged-test-build/*
