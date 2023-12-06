@@ -12,17 +12,17 @@ permissions: write-all
 jobs:
 
   do-production-build:
-      # actions: write
-      # contents: write
-      # deployments: write
-      # id-token: write
-      # issues: none
-      # packages: write
-      # pages: none
-      # pull-requests: none
-      # repository-projects: none
-      # security-events: read
-      # statuses: write
+    actions: write
+    contents: write
+    deployments: write
+    id-token: write
+    issues: none
+    packages: write
+    pages: none
+    pull-requests: none
+    repository-projects: none
+    security-events: read
+    statuses: write
 
     name: Deploy test build to production
     strategy:
@@ -38,8 +38,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: test-build
-      - name: Push test build to production branch
+      - name: Merge test build into production branch
         run: |
-          git add .
-          git commit -m "Deploy test build to production"
+          git checkout production-build
+          git merge --no-ff test-build
           git push origin production-build
