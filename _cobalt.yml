@@ -1,9 +1,9 @@
 source: "."
-destination: dest
+destination: test-build
 
 site:
   title: "thallheim"
-  base_url: "https://thallheim.com"
+  base_url: "https://www.thallheim.com"
 
 default:
   layout: default.liquid
