@@ -34,16 +34,13 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-      - name: "Checkout: current test build"
-        uses: actions/checkout@v3
-        with:
-          ref: test-build
       - name: Switch to production branch
         uses: actions/checkout@v3
         with:
           ref: production-build
       - name: Push test build to production branch
         run: |
+          git clone --branch test-build --single-branch https://github.com/thallheim/thallheim.com.git .
           git add .
           git commit -m "Deploy test build to production"
           git push origin production-build
