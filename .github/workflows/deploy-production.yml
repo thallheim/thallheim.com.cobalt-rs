@@ -44,5 +44,5 @@ jobs:
           ref: production-build
       - name: Merge test build into production branch
         run: |
-          git merge --no-ff test-build
+          git merge --no-ff origin/test-build
           git push origin production-build
