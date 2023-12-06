@@ -4,7 +4,7 @@ layout: code.liquid
 ---
 # Code
 
-Here be code things.
+Here be code things. Also syntax highlighting.
 
 ```rust
     let test: String = "Woo \o/";
