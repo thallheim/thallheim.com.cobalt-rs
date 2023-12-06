@@ -30,6 +30,9 @@ jobs:
           cargo install cobalt-bin || echo "[INFO] Cobalt installed: YES"
       - name: Repo checkout
         uses: actions/checkout@v4
+      - name: "[DEBUG] Show Cobalt config"
+        run: |
+          cobalt debug config
       - name: Build site
         run: |
           cobalt build
