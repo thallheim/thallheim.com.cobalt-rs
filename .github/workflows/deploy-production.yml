@@ -28,24 +28,17 @@ jobs:
     strategy:
       fail-fast: false
     runs-on: self-hosted
-
     steps:
       - name: Set up Git
         run: |
           git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-      - name: "Checkout: test branch"
-        uses: actions/checkout@v4
-        with:
-          ref: test-build
-      - name: "Update test build"
-        run: |
-          git fetch && git pull
       - name: "Checkout: production branch"
         uses: actions/checkout@v4
         with:
-          ref: production-build
+          ref: 'production-build'
+          clean: true
       - name: Merge test build into production branch
         run: |
-          git merge test-build
+          git add .
+          git commit -am "Deploy test build to production branch"
           git push origin production-build
