@@ -8,6 +8,7 @@ Here be code things.
 
 ```rust
     let test: String = "Woo \o/";
+    let mut: u32 = 42;
 ```
 
 **Many cool.** Such syntax highlight. *Wow*.
