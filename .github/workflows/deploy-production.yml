@@ -7,10 +7,11 @@ env:
   CARGO_TERM_COLOR: always
   CLICOLOR: 1
 
+permissions: write-all
+
 jobs:
 
   do-production-build:
-    permissions: write-all
       # actions: write
       # contents: write
       # deployments: write
