@@ -33,23 +33,25 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-      - name: "Checkout: test build"
-        uses: actions/checkout@v4
-        with:
-          ref: 'test-build'
-          clean: true
-      - name: Check for changes
-        id: git-check
+#          clean: true
+      # - name: Check for changes
+      #   id: git-check
+      #   run: |
+      #     if [[ -n $(git status --porcelain) ]]; then
+      #       echo "Changes detected."
+      #     else
+      #       echo "No changes to commit. Exiting."
+      #       exit 0
+      #     fi
+      # - name: Commit and push changes
+      #   if: steps.git-check.outputs.run == 'Changes detected.'
+      #   run: |
+      #     git add .
+      #     git commit -am "Deploy test build to production branch"
+      #     git push origin production-build
+      - name: Switch to production branch
         run: |
-          if [[ -n $(git status --porcelain) ]]; then
-            echo "Changes detected."
-          else
-            echo "No changes to commit. Exiting."
-            exit 0
-          fi
-      - name: Commit and push changes
-        if: steps.git-check.outputs.run == 'Changes detected.'
+          git switch production-build
+      - name: Merge (FF) test build into production branch
         run: |
-          git add .
-          git commit -am "Deploy test build to production branch"
-          git push origin production-build
+          git merge --ff-only origin/test-build
