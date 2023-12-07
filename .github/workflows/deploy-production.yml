@@ -34,7 +34,7 @@ jobs:
           git config --global user.name "GitHub Actions"
       - name: Switch to production branch
         run: |
-          git switch production-build
+          git checkout production-build
       - name: Reset production build to current test build
         run: |
           git reset --hard origin/test-build
