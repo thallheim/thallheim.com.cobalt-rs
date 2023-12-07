@@ -198,7 +198,7 @@ section {
 
 section.landing h2,
 section.landing h3 {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 section.landing article {
@@ -206,8 +206,9 @@ section.landing article {
 }
 
 section.landing article h3 {
-  font-size: 2em;
+  font-size: 1.5em;
   text-decoration: dotted underline;
+  text-decoration-color: var(--orange);
   margin-bottom: 0.5px;
   margin-top: 0;
 }
