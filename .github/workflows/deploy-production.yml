@@ -41,7 +41,7 @@ jobs:
           git reset --hard origin/test-build
       - name: Pull changes
         run: |
-          git pull || git merge --no-ff
+          git pull --allow-unrelated-histories
       - name: Commit and push changes into production build    
         run: |
           git push
