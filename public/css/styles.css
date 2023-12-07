@@ -137,13 +137,13 @@ header .inner {
 
 header nav .button {
   margin: 0 1px;
-  /* transform: skewX(-15deg) translateX(10px); */
+  transform: skewX(-15deg) translateX(10px);
   padding: 0.75em 1em;
   border-radius: 3;
 }
 
 header nav .button > span {
-  /* transform: skewX(15deg); */
+  transform: skewX(15deg);
   display: inline-block;
 }
 
