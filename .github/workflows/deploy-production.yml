@@ -41,4 +41,5 @@ jobs:
           git reset --hard origin/test-build
       - name: Push changes to production build    
         run: |
+          git pull
           git push origin production-build
