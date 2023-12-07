@@ -55,3 +55,4 @@ jobs:
       - name: Merge (FF) test build into production branch
         run: |
           git merge --ff-only origin/test-build
+          git push
