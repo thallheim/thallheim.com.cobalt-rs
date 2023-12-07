@@ -36,10 +36,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: production-build
-      - name: Reset production build to current test build
+      # - name: Reset production build to current test build
+      #   run: |
+      #     git reset --hard origin/test-build
+      - name: Pull changes
         run: |
-          git reset --hard origin/test-build
+          git pull --allow-unrelated-histories
       - name: Push changes to production build    
         run: |
-          git merge --no-ff
-          git pull && git push origin production-build
+          git push origin production-build
