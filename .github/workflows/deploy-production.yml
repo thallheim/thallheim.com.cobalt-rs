@@ -7,22 +7,21 @@ env:
   CARGO_TERM_COLOR: always
   CLICOLOR: 1
 
-permissions: write-all
-
 jobs:
 
   do-production-build:
-    # actions: write
-    # contents: write
-    # deployments: write
-    # id-token: write
-    # issues: none
-    # packages: write
-    # pages: none
-    # pull-requests: none
-    # repository-projects: none
-    # security-events: read
-    # statuses: write
+    permissions:
+      actions: write
+      contents: write
+      deployments: write
+      id-token: write
+      issues: none
+      packages: write
+      pages: none
+      pull-requests: none
+      repository-projects: none
+      security-events: read
+      statuses: write
 
     name: Deploy test build to production
     strategy:
