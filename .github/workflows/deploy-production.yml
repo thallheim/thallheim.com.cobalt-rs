@@ -39,7 +39,4 @@ jobs:
       - name: Reset production build to current test build
         run: |
           git reset --hard origin/test-build
-      - name: Commit and push build to production build
-        run: |
-          git commit -m "Deploy test build to production branch"
           git push origin production-build
