@@ -54,5 +54,4 @@ jobs:
           git switch production-build
       - name: Merge (FF) test build into production branch
         run: |
-          git fetch
-          git status
+          git reset --hard origin/test-build
