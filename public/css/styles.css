@@ -208,7 +208,7 @@ section.landing article {
 section.landing article h3 {
   font-size: 1.5em;
   text-decoration: dotted underline;
-  text-decoration-color: var(--orange);
+  text-decoration-color: var(--dark-grey);
   margin-bottom: 0.5px;
   margin-top: 0;
 }
