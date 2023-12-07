@@ -38,7 +38,17 @@ jobs:
         with:
           ref: 'test-build'
           clean: true
-      - name: Merge test build into production branch
+      - name: Check for changes
+        id: git-check
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "Changes detected."
+          else
+            echo "No changes to commit. Exiting."
+            exit 0
+          fi
+      - name: Commit and push changes
+        if: steps.git-check.outputs.run == 'Changes detected.'
         run: |
           git add .
           git commit -am "Deploy test build to production branch"
