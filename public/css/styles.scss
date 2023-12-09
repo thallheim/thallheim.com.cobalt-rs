@@ -1,45 +1,13 @@
-:root {
-  --violet: #8661C1;
-  --dark-violet: #42256F;
+@import '../../_sass/base-colours';
 
-  --orange: #F1592A;
-  --dark-orange: #A12700;
-  --light-orange: #FF9C7C;
 
-  --yellow: #FFB100;
-  --dark-yellow: #A15700;
-  --light-yellow: #FFE500;
-  --med-light-yellow: #FFB253;
-  --med-dark-yellow: #CB750C;
+$col-background: #D1D2D4;
 
-  --blue: #738ABF;
-  --dark-blue: #435275;
-  --light-blue: #639DC0;
-  --med-light-blue: #3C7EA5;
-  --med-dark-blue: #50628A;
+$font-stack: helvetica, arial, sans-serif;
+$font-main: 'Victor Mono', monospace;
 
-  --green: #66B52E;
-  --dark-green: #254A0B;
-  --light-green: #73C936;
-  --med-light-green: #9ad86e;
-  --med-dark-green: #65B12F;
+$breakpoint: 55em;
 
-  --dark-grey: #181818;
-  --med-grey: #6D6E71;
-  --med-dark-grey: #2e2e2e;
-  --light-grey: #D1D2D4;
-
-  --black: #000;
-  --white: #fff;
-
-  --col_link: #254A0B;
-  --col-background: #D1D2D4;
-
-  --font-stack: helvetica, arial, sans-serif;
-  --font-victor-mono: 'Victor Mono', monospace;
-
-  --breakpoint: 55em;
-}
 
 html {
   height: 100%;
@@ -48,11 +16,13 @@ html {
 
 body {
   height: calc(100% - 15px);
-  background: var(--col-background);
-  /* background: linear-gradient(180deg, var(--light-grey) 70%, var(--med-grey)); */
-  border-top: 15px solid var(--dark-green); */
-  color: var(--dark-grey);
-  font-family: var(--font-victor-mono);
+  background: $light-grey;
+  // border-top: 15px solid $dark-green;
+  border-top: 15px;
+  border-top-style: solid;
+  border-top-color: linear-gradient(90deg, $light-grey 20%, $dark-green 100%);
+  color: $dark-grey;
+  font-family: $font-main;
   line-height: 1.3;
   margin: 0;
   display: flex;
@@ -64,7 +34,7 @@ body {
 }
 
 a {
-  color: var(--dark-green);
+  color: $dark-orange;
   padding: 0.1em 0.1em;
   text-decoration: none;
   font-weight: bold;
@@ -72,10 +42,8 @@ a {
 
 }
 a:hover {
-  background: var(--violet);
-  color: var(--white);
-  border-radius: 5px;
-  transition: all 0.2s ease-in-out;
+  // background: $violet;
+  // color: $white;
 }
 
 hr {
@@ -89,7 +57,7 @@ header {
 }
 
 header .secondary a:hover {
-    background: var(--col-background);
+    background: $col-background;
 }
 
 header .primary h1 {
@@ -98,7 +66,7 @@ header .primary h1 {
 }
 
 header .primary h1 a {
-  color: var(--dark-blue);
+  color: $dark-blue;
   font-size: 2em;
   text-decoration: none;
   text-transform: uppercase;
@@ -119,6 +87,7 @@ header nav {
   justify-content: center;
 }
 
+// ------------------------------------------------------- QUERY WIDTH
 @media (max-width: 51em) {
   header nav {
     max-width: 100%;
@@ -137,13 +106,13 @@ header .inner {
 
 header nav .button {
   margin: 0 1px;
-  transform: skewX(-15deg) translateX(10px);
+  // transform: skewX(-15deg) translateX(10px);
   padding: 0.75em 1em;
   border-radius: 5.5;
 }
 
 header nav .button > span {
-  transform: skewX(15deg);
+  // transform: skewX(15deg);
   display: inline-block;
 }
 
@@ -186,7 +155,7 @@ header nav .button > span {
 @media (min-width: 51em) {
   .inner {
     margin: 0 auto;
-    max-width: var(--breakpoint);
+    max-width: $breakpoint;
     padding: 0 0 0 0;
   }
 }
@@ -208,7 +177,7 @@ section.landing article {
 section.landing article h3 {
   font-size: 1.5em;
   text-decoration: dotted underline;
-  text-decoration-color: var(--med-grey);
+  text-decoration-color: $med-grey;
   margin-bottom: 0.5px;
   margin-top: 0;
 }
@@ -234,8 +203,8 @@ section.docs aside ul li a:hover,
 section.docs aside ul li a:active,
 section.docs aside ul li a:focus {
   font-weight: bold;
-  background: var(--violet);
-  color: var(--white);
+  background: $violet;
+  color: $white;
   padding: 0.1em 0.1em;
   border-radius: 3px;
 }
@@ -274,7 +243,7 @@ pre {
   margin: 0 0 10px;
   font-size: 13px;
   line-height: 1.42857143;
-  color: var(--dark-grey);
+  color: $dark-grey;
   word-break: break-all;
   word-wrap: break-word;
   background-color: #f5f5f5;
@@ -289,7 +258,7 @@ code {
   background-color: #f5f5f5;
   border-radius: 4px;
   border: 1px solid #ccc;
-  color: var(--dark-grey);
+  color: $dark-grey;
   text-shadow: none;
 }
 
@@ -308,62 +277,63 @@ pre code {
 }
 
 .button {
-  background: var(--light-grey);
+  background: $light-grey;
   border-radius: 5px;
-  color: var(--white);
+  color: $white;
   text-decoration: none;
   padding: 0.5em;
-  transition: background 0.25s ease-in-out;
+  transition: background 0.5s ease-out;
 }
 
 .button:hover {
-    text-shadow: -2px 0px 5px var(--black), 2px 0px 5px var(--white);
-    transition: background 0.455s ease-in-out;
+    // text-shadow: -2px 0px 5px $black, 2px 0px 5px $white;
+    text-shadow: 0px 0px 5px $black;
+    transition: background 0.25s ease-in;
 }
 .button:active,
 .button:focus {
-  background: var(--light-grey);
+  background: $light-grey;
 }
 
 .button.code {
-  background: var(--dark-orange);
+  background: $dark-orange;
 }
 
 .button.code:hover,
 .button.code:active,
 .button.code:focus {
-  background: var(--orange);
+  background: $orange;
 }
 
 .button.docs {
-  background: var(--dark-violet);
+  background: $dark-violet;
 }
 
 .button.docs:hover,
 .button.docs:active,
 .button.docs:focus {
-  background: var(--violet);
+  background: $violet;
 }
 
 .button.start {
-  background: var(--dark-green);
+  background: $dark-green;
 }
 
 .button.start:hover,
 .button.start:active,
 .button.start:focus {
-  background: var(--light-green);
+  background: $light-green;
 }
 
 
 .button.musings {
-  background: var(--dark-blue);
+  background: $dark-blue;
 }
 
 .button.musings:hover,
 .button.musings:active,
 .button.musings:focus {
-  background: var(--blue);
+  background: $blue;
 }
 
 
@@ -383,8 +353,8 @@ pre code {
 }
 
 footer {
-  background: var(--dark-grey);
-  color: var(--light-grey);
+  background: $dark-grey;
+  color: $light-grey;
   text-align: center;
 }
 
@@ -402,12 +372,12 @@ table {
 }
 
 table thead {
-    background-color: var(--blue);
-    color: var(--white);
+    background-color: $blue;
+    color: $white;
 }
 
 table thead th {
-    border: 1px solid var(--dark-blue);
+    border: 1px solid $dark-blue;
     padding: 0.5em;
 }
 
