@@ -139,7 +139,7 @@ header nav .button {
   margin: 0 1px;
   transform: skewX(-15deg) translateX(10px);
   padding: 0.75em 1em;
-  border-radius: 4.5;
+  border-radius: 5.5;
 }
 
 header nav .button > span {
