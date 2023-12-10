@@ -38,7 +38,7 @@ jobs:
           ref: production-build
       - name: Fast-forward or merge production build
         run: |
-          git pull --ff-only || git merge --no-ff
+          git merge --no-ff || echo "NO MERGE FOR YOU!" && git pull --ff-only
       - name: Show status and push
         run: |
           git status
