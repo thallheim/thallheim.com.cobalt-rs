@@ -36,14 +36,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: production-build
-      - name: Fast-forward production build
+      - name: Fast-forward or merge production build
         run: |
-          if ! git pull --ff-only origin test-build; then
-            echo "Could not fast-forward; merging..."
-            # git reset --hard origin/test-build
-            git merge --no-ff
-          fi
+          git pull --ff-only || git merge --no-ff
+      - name: Show status and push
+        run: |
           git status
-      - name: Push changes into production build
-        run: |
           git push
