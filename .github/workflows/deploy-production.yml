@@ -38,12 +38,12 @@ jobs:
           ref: production-build
       - name: Fast-forward production build
         run: |
-          if ! git pull origin test-build; then
-            if ! git pull --ff-only origin test-build; then
-              echo "Could not fast-forward; resetting (hard)"
-              git reset --hard origin/test-build
-            fi
-          fi  
+          if ! git pull --ff-only origin test-build; then
+            echo "Could not fast-forward; merging..."
+            # git reset --hard origin/test-build
+            git merge --no-ff
+          fi
+          git status
       - name: Push changes into production build
         run: |
           git push
