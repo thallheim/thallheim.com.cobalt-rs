@@ -25,4 +25,4 @@ posts:
     # For simpler drafts
     published_date: "2020-03-14 01:59:26 +0200"
     layout: musings.liquid
-    permalink: /musings/{{year}}/{{month}}/{{slug}}/
+    permalink: /{{year}}/{{month}}/{{slug}}/
