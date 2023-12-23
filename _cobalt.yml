@@ -23,6 +23,5 @@ posts:
   drafts_dir: "_drafts"
   default:
     # For simpler drafts
-    published_date: "2020-03-14 01:59:26 +0200"
     layout: musings.liquid
     permalink: /{{year}}/{{month}}/{{slug}}/
