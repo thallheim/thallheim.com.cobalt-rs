@@ -13,7 +13,9 @@ syntax_highlight:
   enabled: true
 
 pages:
-  default: {}
+  default:
+    layout: default.liquid
+    permalink: /{{parent}}/{{name}}/
 
 posts:
   dir: "musings"
@@ -21,6 +23,6 @@ posts:
   drafts_dir: "_drafts"
   default:
     # For simpler drafts
-    published_date: "2020-03-14 01:59:26 -0500"
+    published_date: "2020-03-14 01:59:26 +0200"
     layout: musings.liquid
     permalink: /musings/{{year}}/{{month}}/{{slug}}/
