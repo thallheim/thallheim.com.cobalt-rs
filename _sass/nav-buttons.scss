@@ -1,31 +1,38 @@
 @use 'base-colours';
 
-pagenav {
+pagenav nav {
     color: $dark-grey;
-}
+    display: flex;
+    flex-direction: row;
+    margin: 1em 1em 1em 1em;
 
-pagenav a {
-    padding: 0.1em 0.1em;
-    text-decoration: none;
-    font-weight: bold;
-    
-    :hover {
+    &  > :a {
+        padding: 0.1em 0.1em;
+        color: $dark-grey;
+        text-decoration: none;
+        font-weight: bold;
+
+        :hover {
+
+        }
 
     }
+
+    & > :last-child {
+        margin-left: auto;
+    }
+
 }
 
 pagenav .button {
-    background: $dark-green;
-    margin: 0 1px;
-    padding: 0.25em 0.5em;
-    border-radius: 3;
+    background: $med-grey;
+    color: $light-grey;
+    margin: 0 0px;
+    padding: 0.25em 0.35em;
+    border-radius: 3.5px;
     transition: background 0.5s ease-out;
 }
 
-pagenav .button.back {
-}
-
 pagenav .button:hover {
-    background: $light-green;
-
+    background: lighten($dark-grey, 15%);
 }

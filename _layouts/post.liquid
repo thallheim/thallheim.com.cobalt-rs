@@ -7,11 +7,19 @@
     <header>
       {% include "header.liquid" %}
     </header>
-    <main>
-      {{ page.content }}
+    <main class="flex_main">
+      <div class="inner">
+
+        <section class="posts">
+          {{ page.content }}
+          <pagenav>
+            {% include "navbar-pagenav.liquid" %}
+          </pagenav>
+        </section>
+      </div>
     </main>
     <footer>
-      {% include "header.liquid" %}
+      {% include "footer.liquid" %}
     </footer>
   </body>
 </html>
