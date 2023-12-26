@@ -1,6 +1,8 @@
 name: Deploy test build from main branch
 
-# on:
+ on:
+   # Enable running manually from GH site
+   workflow_dispatch
 #   push:
 #     branches: [ main ]
 
