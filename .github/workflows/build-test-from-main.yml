@@ -1,4 +1,4 @@
-name: Deploy test build from main branch
+name: "Deploy test build from main branch"
 
 on:
   # Enable running manually from GH site
