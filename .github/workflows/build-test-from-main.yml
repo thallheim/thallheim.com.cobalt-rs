@@ -69,7 +69,7 @@ jobs:
           name: site-artifacts
           path: staged-test-build
       - name: Enter build dir
-      - run: |
+        run: |
           cd staged-test-build
       - name: Commit and push build to test branch
         run: |
