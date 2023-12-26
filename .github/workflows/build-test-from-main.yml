@@ -54,16 +54,20 @@ jobs:
           rm -rfv ./thallheim.com
       - name: Do shallow repo clone
         run: |
-          git clone --depth=1 https://github.com/thallheim/thallheim.com.git thallheim.com
-          cd thallheim.com || echo "Something's wrong."
+          git clone --depth=1 https://github.com/thallheim/thallheim.com.git thallheim.com || echo "Something's wrong."
+      - name: Change to build dir
+        run: |
+          cd thallheim.com
       - name: Checkout test-build
         run: |
           git checkout test-build
+      - run: |
           git fetch && git status
           ls -lAh
-      - name: Build site
+      - name: hmmBuild site
         run: |
-          cobalt build
+          #cobalt build
+          ls -lAh
       - name: Upload test build artifacts
         uses: actions/upload-artifact@v3
         with:
