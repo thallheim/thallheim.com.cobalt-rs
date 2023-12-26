@@ -24,4 +24,4 @@ posts:
   default:
     # For simpler drafts
     layout: musings.liquid
-    permalink: /{{parent}}/{{year}}/{{month}}/{{slug}}/
+    permalink: /{{year}}/{{month}}/{{slug}}/
