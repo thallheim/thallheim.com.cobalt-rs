@@ -1,0 +1,31 @@
+@use 'base-colours';
+
+pagenav {
+    color: $dark-grey;
+}
+
+pagenav a {
+    padding: 0.1em 0.1em;
+    text-decoration: none;
+    font-weight: bold;
+    
+    :hover {
+
+    }
+}
+
+pagenav .button {
+    background: $dark-green;
+    margin: 0 1px;
+    padding: 0.25em 0.5em;
+    border-radius: 3;
+    transition: background 0.5s ease-out;
+}
+
+pagenav .button.back {
+}
+
+pagenav .button:hover {
+    background: $light-green;
+
+}
