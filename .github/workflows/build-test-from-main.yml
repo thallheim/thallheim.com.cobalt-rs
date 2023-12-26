@@ -1,0 +1,68 @@
+name: Deploy test build from main branch
+
+# on:
+#   push:
+#     branches: [ main ]
+
+env:
+  CARGO_TERM_COLOR: always
+  CLICOLOR: 1
+
+jobs:
+
+  do-test-build:
+    permissions:
+      actions: write
+      contents: write
+      deployments: write
+      id-token: write
+      issues: none
+      packages: write
+      pages: none
+      pull-requests: none
+      repository-projects: none
+      security-events: read
+      statuses: write
+
+    name: Do test build
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest"]
+        rust: ["stable"]
+    continue-on-error: ${{ matrix.rust != 'stable' }}
+    runs-on: self-hosted
+
+    steps:
+      - name: Init Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install Cobalt
+        run: |
+          cargo install cobalt-bin || echo "[INFO] Cobalt installed: YES"
+      - name: Go to temp dir
+        run: |
+          mkdir -pv ~/temp && cd $_
+      - name: Set up Git
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+      - name: Do shallow repo clone
+        run: |
+          git clone --depth=1 https://github.com/thallheim/thallheim.com.git
+      - name: Checkout test-build
+        run: |
+          git checkout test-build
+          git fetch && git status
+      - name: Build site
+        run: |
+          cobalt build
+      - name: Upload test build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: site-artifacts
+          path: staged-test-build
+      - name: Commit and push build to test branch
+        run: |
+          git add . && git commit -m "Deploy build to test branch"
+          git push origin test-build || "No-op: Test build up to date."
