@@ -55,27 +55,22 @@ jobs:
       - name: Do shallow repo clone
         run: |
           git clone --depth=1 https://github.com/thallheim/thallheim.com.git thallheim.com || echo "Something's wrong."
-      - name: Change to build dir
+      - name: Enter repo dir
         run: |
           cd thallheim.com
+      - name: Build site
+        run: |
+          cobalt build && ls -lAh || echo "COBALT: Build failed."
       - name: Checkout test-build
         run: |
-          git checkout test-build
+          git checkout test branch
       - run: |
           git fetch && git status
-          ls -lAh
-      - name: hmmBuild site
-        run: |
-          #cobalt build
-          ls -lAh
       - name: Upload test build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: site-artifacts
           path: staged-test-build
-      - name: Enter build dir
-        run: |
-          cd staged-test-build
       - name: Commit and push build to test branch
         run: |
           git add . && git commit -m "DEPLOYMENT: Test build
