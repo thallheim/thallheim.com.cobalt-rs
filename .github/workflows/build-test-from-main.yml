@@ -49,6 +49,9 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
+      - name: Purge dest dir if it exists
+        run: |
+          rm -rfv ./thallheim.com
       - name: Do shallow repo clone
         run: |
           git clone --depth=1 https://github.com/thallheim/thallheim.com.git thallheim.com
