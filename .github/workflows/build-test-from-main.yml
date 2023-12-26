@@ -61,9 +61,9 @@ jobs:
       - name: Build site
         run: |
           cobalt build && ls -lAh || echo "COBALT: Build failed."
-      - name: Checkout test-build
+      - name: Checkout test branch
         run: |
-          git checkout test branch
+          git checkout test-build
       - run: |
           git fetch && git status
       - name: Upload test build artifacts
