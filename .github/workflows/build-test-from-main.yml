@@ -60,6 +60,7 @@ jobs:
         run: |
           git checkout test-build
           git fetch && git status
+          ls -lAh
       - name: Build site
         run: |
           cobalt build
