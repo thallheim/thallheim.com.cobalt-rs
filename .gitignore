@@ -1,4 +1,5 @@
 .DS_Store
 build/
+staged-test-build/
 temp/
 serve.sh
