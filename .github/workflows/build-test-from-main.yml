@@ -42,35 +42,38 @@ jobs:
       - name: Install Cobalt
         run: |
           cargo install cobalt-bin || echo "[INFO] Cobalt installed: YES"
-      - name: Go to temp dir
-        run: |
-          mkdir -pv ~/temp && cd $_
+
       - name: Set up Git
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-      - name: Purge dest dir if it exists
-        run: |
-          rm -rfv ./thallheim.com
-      - name: Clone repo
-        run: |
-          git clone https://github.com/thallheim/thallheim.com.git thallheim.com || echo "Something's wrong."
-      - name: Enter repo dir
-        run: |
-          cd thallheim.com
+
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
       - name: Build site
         run: |
-          cobalt build && ls -lAh || echo "COBALT: Build failed."
-      - name: Checkout test branch
-        run: |
-          git checkout test-build
-      - run: |
-          git fetch && git status
+          cobalt build -c ./_cobalt.yml && ls -lAh
+
       - name: Upload test build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: site-artifacts
           path: staged-test-build
+
+      - name: Create and/or switch to test branch
+        uses: actions/checkout@v4
+        with:
+          ref: test-build
+
+      - name: Pull test build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: site-artifacts
+          path: .
+
       - name: Commit and push build to test branch
         run: |
           git add . && git commit -m "DEPLOYMENT: Test build
