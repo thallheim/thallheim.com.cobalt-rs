@@ -76,5 +76,5 @@ jobs:
 
       - name: Commit and push build to test branch
         run: |
-          git add . && git commit -m "DEPLOYMENT: Test build
+          git add . && git commit -m "DEPLOYMENT: Test build"
           git push origin test-build || "No-op: Test build up to date."
